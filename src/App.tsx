@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import {useState} from 'react'
 import './App.css';
+import Buttons from './components/Buttons';
+import Products from './components/Products';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [category, setCategory] = useState('All')
+
+    return (
+        <main>
+            <h1>Some store name</h1>
+            <Buttons category={category} setCategory={setCategory}/>
+            <Products category={category}/>
+        </main>
+    );
 }
 
 export default App;
