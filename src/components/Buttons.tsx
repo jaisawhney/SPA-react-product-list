@@ -1,4 +1,4 @@
-import {categoriesUnique} from '../data';
+import items, {categoriesWithCounts} from '../data';
 
 interface props {
     category: string,
@@ -8,13 +8,16 @@ interface props {
 export default function Buttons({category, setCategory}: props) {
     return (
         <div className={'categoryButtons'}>
-            {categoriesUnique.map((name, i) => {
+            {Object.keys(categoriesWithCounts).map((name, i) => {
                 const isSelected = name === category ? 'selected' : ''
                 return (
-                    <button className={isSelected} onClick={() => setCategory(name)} key={i}>{name}</button>
+                    <button className={isSelected} onClick={() => setCategory(name)}
+                            key={i}>{name} ({categoriesWithCounts[name]})</button>
                 )
             })}
-            <button className={category === 'All' ? 'selected' : ''} onClick={() => setCategory('All')}>All</button>
+            <button className={category === 'All' ? 'selected' : ''} onClick={() => setCategory('All')}>All
+                ({items.length})
+            </button>
         </div>
     );
 }
