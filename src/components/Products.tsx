@@ -1,14 +1,14 @@
 import items from '../data';
 
 interface props {
-    category: string,
+    selectedCategories: string[],
 }
 
-export default function Products({category}: props) {
+export default function Products({selectedCategories}: props) {
     return (
         <div className={'items'}>
             {items
-                .filter((item) => item.category === category || category === 'All')
+                .filter((item) =>  selectedCategories.includes(item.category) || !selectedCategories.length)
                 .map((item, i) => (
                     <div className={'item'} key={i}>
                         <h2>{item.name}</h2>

@@ -5,13 +5,14 @@ import Products from './components/Products';
 
 
 function App() {
-    const [category, setCategory] = useState('All')
+    // Array used for multi-category selection
+    const [selectedCategories, setSelectedCategories] = useState<string[] | []>([])
 
     return (
         <main>
             <h1>Some store name</h1>
-            <Buttons category={category} setCategory={setCategory}/>
-            <Products category={category}/>
+            <Buttons selectedCategories={selectedCategories} setCategory={setSelectedCategories}/>
+            <Products selectedCategories={selectedCategories}/>
         </main>
     );
 }
